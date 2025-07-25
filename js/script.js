@@ -1,6 +1,19 @@
 const tasks = [];
 let activeFilter = "all";
 
+document.addEventListener("DOMContentLoaded", () => {
+  const savedTasks = JSON.parse(localStorage.getItem("tasks"));
+
+  if ( savedTasks ) {
+    savedTasks.forEach((task) => tasks.push(task));
+  }
+  updateTasksList();
+});
+
+const saveTasks = () => {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+};
+
 const addTask = () => {
   const inputTask = document.getElementById("inputTask");
   const inputDate = document.getElementById("inputDate");
@@ -18,6 +31,7 @@ const addTask = () => {
     console.log(tasks);
 
     updateTasksList();
+    saveTasks();
 
     inputTask.value = "";
     inputDate.value = "";
@@ -76,17 +90,20 @@ const deleteAllButton = document.getElementById("deleteAllButton");
 deleteAllButton.addEventListener("click", function () {
   tasks.length = 0;
   updateTasksList();
+  saveTasks();
 });
 
 const deleteTask = (index) => {
   tasks.splice(index, 1);
   updateTasksList();
+  saveTasks();
 };
 
 const statusTask = (index) => {
   tasks[index].completed = !tasks[index].completed;
 
   updateTasksList();
+  saveTasks();
 };
 
 const editTask = (index) => {
@@ -98,6 +115,7 @@ const editTask = (index) => {
 
   tasks.splice(index, 1);
   updateTasksList();
+  saveTasks();
 };
 
 document.getElementById("todoForm").addEventListener("submit", function (e) {
