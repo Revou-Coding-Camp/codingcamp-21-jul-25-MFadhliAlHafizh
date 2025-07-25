@@ -1,0 +1,264 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #0e1628;
+  padding: 30px;
+  height: 100vh;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todoContainer {
+  max-width: 800px;
+  padding: 20px;
+  background-color: #303642;
+  border-radius: 15px;
+  box-shadow: 0px 0px 13px 0px #c4c8dc;
+  overflow: hidden;
+}
+
+.todoContainer h1 {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #c4c8dc;
+}
+
+.inputContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  background-color: #0e1628;
+  color: #919ac4;
+  border: 2px solid #0e1628;
+  border-radius: 7px;
+}
+
+input::placeholder {
+  color: #919ac4;
+}
+
+input:focus,
+input:active {
+  background-color: #0e1628;
+  border-color: #919ac4;
+  outline: none;
+  box-shadow: 0px 0px 13px 0px #919ac4;
+}
+
+input:-webkit-autofill {
+  background-color: #0e1628 !important;
+  -webkit-box-shadow: 0 0 0px 1000px #0e1628 inset !important;
+  -webkit-text-fill-color: #919ac4 !important;
+}
+
+input:-webkit-autofill:focus {
+  box-shadow: 0px 0px 13px 0px #919ac4, 0 0 0px 1000px #0e1628 inset !important;
+}
+
+.inputTask,
+.inputDate {
+  flex-grow: 1;
+}
+
+.addTaskButton {
+  background-color: #919ac4;
+  color: #0e1628;
+}
+
+.newTaskIcon {
+  display: block;
+}
+
+.newTaskText {
+  display: none;
+}
+
+.filterButtonContainer {
+  position: relative;
+}
+
+.filterMenu {
+  display: flex;
+  flex-direction: column;
+  background-color: #222635;
+  color: #919ac4;
+  border-radius: 7px;
+  position: absolute;
+  left: 115%;
+  top: 0;
+  overflow: hidden;
+  display: none;
+}
+
+.filterMenu.open {
+  display: block;
+}
+
+.filterMenu .filterItems {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.filterMenu .filterItems:hover {
+  background-color: #919ac4;
+  color: #0e1628;
+}
+
+.filterMenu .filterItems.active {
+  background-color: #919ac4;
+  color: #0e1628;
+}
+
+button {
+  padding: 10px 15px;
+  border-radius: 7px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.filterButton {
+  background-color: #222635;
+  color: #919ac4;
+}
+
+.deleteButton {
+  background-color: #919ac4;
+  color: #0e1628;
+}
+
+.functionButton {
+  margin: 30px 0 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tableWrapper {
+  border-radius: 7px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  min-width: 700px;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+table thead {
+  background-color: #0e1628;
+  color: #919ac4;
+}
+
+table tbody {
+  background-color: #121c32;
+  color: #919ac4;
+  padding: 10px;
+}
+
+table tr th,
+table tr td {
+  padding: 20px;
+  font-size: 14px;
+}
+
+table tr .status span {
+  color: black;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 20px;
+  border-radius: 999px;
+}
+
+table tr .status .completed {
+  background-color: #319274;
+}
+
+table tr .status .pending {
+  background-color: #a8842d;
+}
+
+table tr .actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+table tr .actions i {
+  padding: 7px 12px;
+  border-radius: 7px;
+  color: black;
+  cursor: pointer;
+}
+
+table tr .actions i:nth-of-type(1) {
+  background-color: #319274;
+}
+
+table tr .actions i:nth-of-type(2) {
+  background-color: #a8842d;
+}
+
+table tr .actions i:nth-of-type(3) {
+  background-color: #a6575c;
+}
+
+@media (max-width: 640px) {
+  .todoContainer {
+    width: 100%;
+  }
+
+  .inputContainer {
+    flex-direction: column;
+  }
+
+  .addTaskButton {
+    width: 100%;
+  }
+
+  .newTaskIcon {
+    display: none;
+  }
+
+  .newTaskText {
+    display: block;
+  }
+
+  table {
+    width: 100%;
+    min-width: max-content;
+    table-layout: auto;
+  }
+
+  table tr th,
+  table tr td {
+    padding: 10px;
+    font-size: 12px;
+  }
+}
